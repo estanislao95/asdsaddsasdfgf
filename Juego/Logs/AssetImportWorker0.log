@@ -1,0 +1,195 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.25f1 (9b9180224418) revision 10195328'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22000) 64bit Professional' Language: 'es' Physical Memory: 16341 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.25f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+D:/unity projects/Juego
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+56112
+Successfully changed project path to: D:/unity projects/Juego
+D:/unity projects/Juego
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 29.29 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.25f1 (9b9180224418)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/unity projects/Juego/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 960 (ID=0x1401)
+    Vendor:   
+    VRAM:     2007 MB
+    Driver:   26.21.14.3200
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56708
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.000694 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 36.05 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.573 seconds
+Domain Reload Profiling:
+	ReloadAssembly (573ms)
+		BeginReloadAssembly (47ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (458ms)
+			LoadAssemblies (46ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (162ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (29ms)
+			SetupLoadedEditorAssemblies (167ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (36ms)
+				BeforeProcessingInitializeOnLoad (18ms)
+				ProcessInitializeOnLoadAttributes (81ms)
+				ProcessInitializeOnLoadMethodAttributes (29ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.002402 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.29 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.996 seconds
+Domain Reload Profiling:
+	ReloadAssembly (997ms)
+		BeginReloadAssembly (130ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (17ms)
+		EndReloadAssembly (814ms)
+			LoadAssemblies (73ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (280ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (57ms)
+			SetupLoadedEditorAssemblies (302ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (73ms)
+				ProcessInitializeOnLoadAttributes (214ms)
+				ProcessInitializeOnLoadMethodAttributes (8ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 0.29 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1520 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.1 MB.
+System memory in use after: 68.2 MB.
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 1954.
+Total: 2.481000 ms (FindLiveObjects: 0.209200 ms CreateObjectMapping: 0.079700 ms MarkObjects: 2.113400 ms  DeleteObjects: 0.078100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/objetos
+  artifactKey: Guid(53146f3086adf7e4a8c25ed6070c65c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/objetos using Guid(53146f3086adf7e4a8c25ed6070c65c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82e9dbde6b807aa584b3dd619f1629bc') in 0.007280 seconds 
+  Import took 0.009390 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.272301 seconds.
+  path: Assets/objetos/pick ups
+  artifactKey: Guid(7c8edb6341a7f9a42bc5b980f20894f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/objetos/pick ups using Guid(7c8edb6341a7f9a42bc5b980f20894f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5ff023b522ed3602d3c83290362a372') in 0.007282 seconds 
+  Import took 0.009422 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 28.081920 seconds.
+  path: Assets/objetos/pick ups/pistol ammo.prefab
+  artifactKey: Guid(4c216b4d057fbb641a631d0c4730d12a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/objetos/pick ups/pistol ammo.prefab using Guid(4c216b4d057fbb641a631d0c4730d12a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4187ceb3fdc4ca4d6a339a9bbb6942d') in 0.108671 seconds 
+  Import took 0.111397 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.512406 seconds.
+  path: Assets/objetos/pick ups/machinegun ammo.prefab
+  artifactKey: Guid(3c5ba4c3a1d22444f9b11e6a018f7a20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/objetos/pick ups/machinegun ammo.prefab using Guid(3c5ba4c3a1d22444f9b11e6a018f7a20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d3b860b7a6bc8bb9c70318a57eded0d') in 0.013052 seconds 
+  Import took 0.015987 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.955734 seconds.
+  path: Assets/objetos/pick ups/armor.prefab
+  artifactKey: Guid(7316bd57eabce1f49b5a0ec5e6094d84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/objetos/pick ups/armor.prefab using Guid(7316bd57eabce1f49b5a0ec5e6094d84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3bc6983dee705da0132b88f9356510b6') in 0.010901 seconds 
+  Import took 0.013696 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.958830 seconds.
+  path: Assets/objetos/pick ups/Medkit.prefab
+  artifactKey: Guid(82e5b93fc5f70a3409399c747213a6ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/objetos/pick ups/Medkit.prefab using Guid(82e5b93fc5f70a3409399c747213a6ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c772cfa809030869d4f4806199b2faa4') in 0.010642 seconds 
+  Import took 0.013253 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.032760 seconds.
+  path: Assets/objetos/pick ups/speedbust.prefab
+  artifactKey: Guid(1e42196ff62100049ae5922fa887d34a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/objetos/pick ups/speedbust.prefab using Guid(1e42196ff62100049ae5922fa887d34a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9fba1eb155c9c8a3a4e8a83874d37a8') in 0.011140 seconds 
+  Import took 0.014246 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.014691 seconds.
+  path: Assets/objetos/pick ups/jump power up.prefab
+  artifactKey: Guid(8991745907b2cfb4b96089ed6adad7e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/objetos/pick ups/jump power up.prefab using Guid(8991745907b2cfb4b96089ed6adad7e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '804411a498d9bee340f1a8941c90dc00') in 0.011445 seconds 
+  Import took 0.014630 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
