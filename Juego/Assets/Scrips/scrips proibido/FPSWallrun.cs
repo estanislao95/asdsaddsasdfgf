@@ -37,6 +37,9 @@ public class FPSWallrun : MonoBehaviour
     [HideInInspector]
     public float tilt = 0;
 
+    [HideInInspector]
+    public int Gh = 0;
+
     private void Start()
     {
 
@@ -59,10 +62,12 @@ public class FPSWallrun : MonoBehaviour
 
     void Update()
     {
+
         CheckW();
 
-        if (CWallRun())
+        if (CWallRun() && rb.velocity.magnitude <= 23f)
         {
+
             if (Wl)
             {
                 StartWR();

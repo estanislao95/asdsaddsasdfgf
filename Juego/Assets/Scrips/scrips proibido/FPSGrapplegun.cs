@@ -23,12 +23,15 @@ public class FPSGrapplegun : MonoBehaviour
     [SerializeField] private float damper = 0;
     [SerializeField] private float masscale = 0;
 
-    [SerializeField] private int VC = 0;
+
+    public FPSWallrun Wr;
+
+
     void start()
     {
-        //Lr = GetComponent<LineRenderer>();
 
-        
+
+
 
     }
 
@@ -54,6 +57,7 @@ public class FPSGrapplegun : MonoBehaviour
 
     void StartGrap()
     {
+        //Wr.Gh = 1;
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, MGdistance, Glp))
         {
@@ -66,8 +70,8 @@ public class FPSGrapplegun : MonoBehaviour
             float DistanceFromP = Vector3.Distance(player.position, Gp);
 
 
-            //joint.maxDistance = DistanceFromP * 0.8f;
-            joint.minDistance = DistanceFromP * 0.45f;
+            joint.maxDistance = DistanceFromP * 0.5f;
+            joint.minDistance = DistanceFromP * 0.2f;
 
 
             joint.spring = spring;
@@ -106,8 +110,24 @@ public class FPSGrapplegun : MonoBehaviour
 
     void StopGrap()
     {
-        Lr.positionCount = 0;
         Destroy(joint);
+        Lr.positionCount = 0;
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+
+
+        if (collision.gameObject.layer == 6)
+        {
+
+            Wr.Gh = 0;
+        }
+
+
+
     }
 
 }

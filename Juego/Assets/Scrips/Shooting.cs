@@ -21,14 +21,19 @@ public class Shooting : MonoBehaviour
     public int pistolammoMax = 0;
     public int PistolFirerate = 0;
     public int PistolRange = 0;
+    public int PistolDamage = 0;
 
     public int machinegunammo = 0;
     public int machinegunammoMax = 0;
     public int machineGunFirerate = 0;
     public int mahcinegunRange = 0;
+    public int mahcinegunDamage = 0;
 
     [SerializeField]
     int currentgunfirerrate = 0;
+
+    [SerializeField]
+    int currentgundamage = 0;
 
     public Text ammo;
     public Text gunindicator;
@@ -43,6 +48,7 @@ public class Shooting : MonoBehaviour
         gunindicator.text = ("Ammo " + pistolammo);
 
         currentgunfirerrate = PistolFirerate;
+        currentgundamage = PistolDamage;
 
     }
 
@@ -57,6 +63,7 @@ public class Shooting : MonoBehaviour
             ammo.text = ("Pistol");
             gunindicator.text = ("Ammo " + pistolammo);
             currentgunfirerrate = PistolFirerate;
+            currentgundamage = PistolDamage;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
@@ -64,6 +71,7 @@ public class Shooting : MonoBehaviour
             ammo.text = ("Machine Gun");
             gunindicator.text = ("Ammo " + machinegunammo);
             currentgunfirerrate = machineGunFirerate;
+            currentgundamage = machineGunFirerate;
         }
         // if (Input.GetKeyDown(KeyCode.Alpha3))
         // {
@@ -175,11 +183,11 @@ public class Shooting : MonoBehaviour
     {
         if (canshot())
         {
-            Debug.Log("pew");
+            //aqui esta para añadir nuevos enemigos
             if (Physics.Raycast(shotpivot.position, shotpivot.forward, out RaycastHit hitinfo, PistolRange))
             {
-                Debug.Log(hitinfo.transform.name);
-
+                basicenemy enemy = hitinfo.transform.GetComponent<basicenemy>();
+                enemy?.hit(currentgundamage);
             }
 
 

@@ -16,6 +16,9 @@ public class move : MonoBehaviour
     public float maxarmor = 0;
     public float currentarmor = 0;
 
+    public float MaxAirSpeed = 2;
+
+
     [HideInInspector]
     public bool isjump = true;
     [HideInInspector]
@@ -25,6 +28,7 @@ public class move : MonoBehaviour
     public int speedboost = 0;
     [HideInInspector]
     float speedtimer = 0;
+
 
 
     public float run = 0;
@@ -38,7 +42,11 @@ public class move : MonoBehaviour
     [HideInInspector]
     public Vector3 inputVector;
 
+
+
+
     //public Rigidbody cam;
+
 
 
    // public float dash_timer = 0;
@@ -64,7 +72,7 @@ public class move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        movement();
         jumplogic();
         //dash();
 
@@ -79,16 +87,15 @@ public class move : MonoBehaviour
         armor.fillAmount = (currentarmor / maxarmor);
 
 
-        //Debug.Log(inputVector.y);
 
 
+
+
+        Debug.Log(rigid.velocity.magnitude);
 
     }
 
-    private void FixedUpdate()
-    {
-        movement();
-    }
+
 
     // void dash()
     // {
@@ -122,12 +129,17 @@ public class move : MonoBehaviour
     // }
 
 
+
+
     void movement()
     {
 
         inputVector.x = Input.GetAxis("Horizontal");
         inputVector.y = Input.GetAxis("Vertical");
         inputVector.z = 0f;
+
+
+        //Airmovement(inputVector);
 
        //  Vector3 mouseinputVector;
        //
@@ -153,9 +165,7 @@ public class move : MonoBehaviour
         //                        ) 
         //                        * walkpseed * Time.deltaTime;
 
-        rigid.MovePosition(rigid.position + (transform.right
-                           * inputVector.x + transform.forward * inputVector.y)
-                           * walkpseed * Time.deltaTime);
+
 
        // rigid.MoveRotation(rigid.rotation * Quaternion.Euler(0, mouseinputVector.x *
        //                                     roatationspeed * Time.deltaTime, 0));
@@ -164,6 +174,22 @@ public class move : MonoBehaviour
 
 
 
+    private void FixedUpdate()
+    {
+        if (inputVector.magnitude > 0)
+        {
+            rigid.MovePosition(rigid.position + (transform.right
+           * inputVector.x + transform.forward * inputVector.y)
+           * walkpseed * Time.deltaTime);
+
+
+            
+
+
+        }
+
+
+    }
 
 
 
@@ -210,6 +236,24 @@ public class move : MonoBehaviour
 
 
 
+
+   // void Airmovement(Vector3 Pmove)
+   // {
+   //
+   //     Vector3 projvel = Vector3.Project(GetComponent<Rigidbody>().velocity, Pmove);
+   //
+   //     bool isAway = Vector3.Dot(Pmove, projvel) <= 0;
+   //
+   //
+   //     if (projvel.magnitude < MaxAirSpeed || isAway)
+   //     {
+   //         Vector3 AirStrafeForce =  (0,0,0);
+   //         Vector3 vc = Vector3.Normalize * AirStrafeForce;
+   //
+   //
+   //     }
+   //
+   // }
 
 
 

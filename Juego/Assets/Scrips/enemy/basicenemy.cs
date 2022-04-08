@@ -8,14 +8,23 @@ public class basicenemy : MonoBehaviour
 
     
 
-    // Update is called once per frame
+
+    public void hit(int damage)
+    {
+        life -= damage;
+    }
+
+
+
+
     void Update()
     {
 
-        if (life <= 0)
-        {
-            Destroy(this.gameObject);
-        }
+       if (life <= 0)
+       {
+           Destroy(this.gameObject);
+       }
+
 
     }
 
