@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class FPSGrapplegun : MonoBehaviour
 {
@@ -26,18 +28,21 @@ public class FPSGrapplegun : MonoBehaviour
 
     public FPSWallrun Wr;
 
+    public RawImage CrossHair;
 
-    void start()
-    {
+    int range = 0;
 
+    public Color rojo;
+    public Color negro;
+    public Color verde;
 
-
-
-    }
+    public bool active = true;
 
 
     void Update()
     {
+        
+
         if (Input.GetMouseButtonDown(1))
         {
             StartGrap();
@@ -48,6 +53,29 @@ public class FPSGrapplegun : MonoBehaviour
         }
 
 
+
+
+        if (Physics.Raycast(cam.position, cam.forward, 999, Glp) && active)
+        {
+            if (Physics.Raycast(cam.position, cam.forward, MGdistance, Glp))
+            {
+
+                CrossHair.color = verde;
+            }
+            else
+            {
+                CrossHair.color = rojo;
+            }
+        }
+        else
+        {
+            if (active == true)
+            {
+                range = 0;
+                CrossHair.color = negro;
+            }
+
+        }
     }
 
     private void LateUpdate()

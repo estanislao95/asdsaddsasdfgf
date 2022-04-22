@@ -90,87 +90,6 @@ public class Shooting : MonoBehaviour
             Pshot();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // if (Input.GetKey(KeyCode.Mouse0) && type == 1 && pistolammo >= 0)
-        // {
-        //     fireratetimer += Time.deltaTime;
-        //     gunindicator.text = ("Ammo " + pistolammo);
-        //
-        //     if (fireratetimer >= 0.3f)
-        //     {
-        //
-        //         Rigidbody bulletClone = (Rigidbody)Instantiate(pistol, transform.position, transform.rotation);
-        //
-        //
-        //
-        //         bulletClone.transform.position = shotpivot.position;
-        //         bulletClone.velocity = transform.forward * speed;
-        //
-        //         fireratetimer = 0;
-        //         pistolammo--;
-        //     }
-        //
-        //
-        //
-        //
-        // }
-        //
-        // if (Input.GetKey(KeyCode.Mouse0) && type == 2 && machinegunammo >= 0)
-        // {
-        //     fireratetimer += Time.deltaTime;
-        //     gunindicator.text = ("Ammo " + machinegunammo);
-        //
-        //     if (fireratetimer >= 0.1f)
-        //     {
-        //
-        //         Rigidbody bulletClone1 = (Rigidbody)Instantiate(machinegun, transform.position, transform.rotation);
-        //
-        //
-        //
-        //         bulletClone1.transform.position = shotpivot.position;
-        //         bulletClone1.transform.rotation = shotpivot.rotation;
-        //         bulletClone1.velocity = transform.forward * speed;
-        //
-        //         fireratetimer = 0;
-        //         machinegunammo--;
-        //     }
-        //
-        //
-        //
-        //
-        // }
-
-
-        // if (Input.GetKeyDown(KeyCode.Mouse0) && type == 3)
-        // {
-        //     Rigidbody bulletClone = (Rigidbody)Instantiate(bullet, transform.position, transform.rotation);
-        //
-        //
-        //
-        //     bulletClone.transform.position = shotpivot.position;
-        //     bulletClone.velocity = transform.right * speed;
-        //
-        //
-        //
-        // }
-
         machinegunammo = machinegunammo > machinegunammoMax ? machinegunammoMax : machinegunammo;
         pistolammo = pistolammo > pistolammoMax ? pistolammoMax : pistolammo;
 
@@ -181,7 +100,7 @@ public class Shooting : MonoBehaviour
 
     private void Pshot()
     {
-        if (canshot())
+        if (canshot()) //aqui se empieza el disparo
         {
             //aqui esta para añadir nuevos enemigos
             if (Physics.Raycast(shotpivot.position, shotpivot.forward, out RaycastHit hitinfo, PistolRange))

@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class jumplatform : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float jumpPower = 0;
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -25,7 +15,7 @@ public class jumplatform : MonoBehaviour
         {
 
 
-            player.rigid.AddForce(Vector3.up * player.jumpspeed * 4.2f, ForceMode.Impulse);
+            player.rigid.AddForce(Vector3.up * player.jumpspeed * jumpPower, ForceMode.Impulse);
 
 
 

@@ -40,6 +40,8 @@ public class FPSWallrun : MonoBehaviour
     [HideInInspector]
     public int Gh = 0;
 
+    public LayerMask Walls;
+
     private void Start()
     {
 
@@ -49,9 +51,9 @@ public class FPSWallrun : MonoBehaviour
 
     void CheckW()
     {
-        Wl = Physics.Raycast(transform.position, -orientation.right, out Lwallhit, wallD);
+        Wl = Physics.Raycast(transform.position, -orientation.right, out Lwallhit, wallD, Walls);
 
-        WR = Physics.Raycast(transform.position, orientation.right, out Rwallhit, wallD); 
+        WR = Physics.Raycast(transform.position, orientation.right, out Rwallhit, wallD, Walls); 
     }
 
     bool CWallRun()
@@ -71,12 +73,12 @@ public class FPSWallrun : MonoBehaviour
             if (Wl)
             {
                 StartWR();
-                Debug.Log("left"); 
+
             }
             else if (WR)
             {
                 StartWR();
-                Debug.Log("right");
+
             }
             else
             {

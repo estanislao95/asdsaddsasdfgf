@@ -29,7 +29,8 @@ public class move : MonoBehaviour
     [HideInInspector]
     float speedtimer = 0;
 
-
+    [SerializeField]
+    Transform orientation;
 
     public float run = 0;
 
@@ -45,17 +46,26 @@ public class move : MonoBehaviour
 
 
 
+    public float distance = 1;
+
+    bool Fw = false;
+    bool Rw = false;
+    bool Lw = false;
+    bool Riw = false;
+
+    public LayerMask Ground;
+
     //public Rigidbody cam;
 
 
 
-   // public float dash_timer = 0;
-   // public int dash_amount = 0;
-   // int dash_amount_max = 0;
-   // public int dashon = 0;
-   // public float dashtimer = 0;
-   // public float refilltimer = 0;
-   // public float refilltimermax = 0;
+    // public float dash_timer = 0;
+    // public int dash_amount = 0;
+    // int dash_amount_max = 0;
+    // public int dashon = 0;
+    // public float dashtimer = 0;
+    // public float refilltimer = 0;
+    // public float refilltimermax = 0;
 
 
 
@@ -69,10 +79,28 @@ public class move : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+
+
+    public void hitdect()
+    {
+      Fw =  Physics.Raycast(transform.position, orientation.forward, distance, Ground);
+
+      Rw = Physics.Raycast(transform.position, -orientation.forward, distance, Ground);
+
+
+      Lw = Physics.Raycast(transform.position, orientation.right, distance, Ground);
+
+      Riw = Physics.Raycast(transform.position, -orientation.right, distance, Ground);
+
+    }
+
+
+
+
+
     void Update()
     {
-        movement();
+        hitdect();
         jumplogic();
         //dash();
 
@@ -90,10 +118,9 @@ public class move : MonoBehaviour
 
 
 
-
-        Debug.Log(rigid.velocity.magnitude);
-
     }
+    
+
 
 
 
@@ -134,18 +161,94 @@ public class move : MonoBehaviour
     void movement()
     {
 
-        inputVector.x = Input.GetAxis("Horizontal");
-        inputVector.y = Input.GetAxis("Vertical");
+
+
+
+
+       if (Fw)
+       {
+           if (Input.GetAxis("Vertical") < 0)
+           {
+               inputVector.y = Input.GetAxis("Vertical");
+           }
+           else
+           {
+               inputVector.y = 0;
+           }
+       }
+       else if (Rw)
+       {
+           if (Input.GetAxis("Vertical") > 0)
+           {
+               inputVector.y = Input.GetAxis("Vertical");
+           }
+           else
+           {
+               inputVector.y = 0;
+           }
+       }
+       else
+       {
+           inputVector.y = Input.GetAxis("Vertical");
+       }
+
+
+
+        if (Lw)
+        {
+            if (Input.GetAxis("Horizontal") < 0)
+            {
+                inputVector.x = Input.GetAxis("Horizontal");
+            }
+            else
+            {
+                inputVector.x = 0;
+            }
+        }
+        else if (Riw)
+        {
+            if (Input.GetAxis("Horizontal") > 0)
+            {
+                inputVector.x = Input.GetAxis("Horizontal");
+            }
+            else
+            {
+                inputVector.x = 0;
+            }
+        }
+        else
+        {
+            inputVector.x = Input.GetAxis("Horizontal");
+        }
+
+
+
+
+
+        //inputVector.y = Input.GetAxis("Vertical");
+        //inputVector.x = Input.GetAxis("Horizontal");
         inputVector.z = 0f;
 
 
+
+
+
+
+
+
+
+
+
+
+        //Debug.Log(inputVector);
+
         //Airmovement(inputVector);
 
-       //  Vector3 mouseinputVector;
-       //
-       // mouseinputVector.x = Input.GetAxis("Mouse X");
-       // mouseinputVector.y = Input.GetAxis("Mouse Y");
-       // mouseinputVector.z = 0f;
+        //  Vector3 mouseinputVector;
+        //
+        // mouseinputVector.x = Input.GetAxis("Mouse X");
+        // mouseinputVector.y = Input.GetAxis("Mouse Y");
+        // mouseinputVector.z = 0f;
 
 
         if (speedboost == 1)
@@ -176,6 +279,7 @@ public class move : MonoBehaviour
 
     private void FixedUpdate()
     {
+        movement();
         if (inputVector.magnitude > 0)
         {
             rigid.MovePosition(rigid.position + (transform.right
@@ -217,7 +321,7 @@ public class move : MonoBehaviour
             jumpamount++;
             onair = true;
 
-            Debug.Log(jumpamount);
+            //Debug.Log(jumpamount);
 
             if (jumpamount == 2)
             {
@@ -276,8 +380,13 @@ public class move : MonoBehaviour
             onair = false;
         }
 
+        if  (collision.gameObject.layer == 9)
+        {
+            isjump = true;
+            jumpamount = 0;
+            onair = false;
+        }
 
-        
     }
 
 
