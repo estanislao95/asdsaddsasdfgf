@@ -5,33 +5,16 @@ using UnityEngine;
 public class Armor : MonoBehaviour
 {
     public int Armore = 0;
-
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    public AudioClip sound;
 
     private void OnTriggerEnter(Collider collision)
     {
         move player = collision.GetComponent<move>();
-
-
         if (player != null && player.currentarmor != player.maxarmor)
         {
-
             player.currentarmor += Armore;
-
+            AudioSource.PlayClipAtPoint(sound, transform.position);
             Destroy(this.gameObject);
         }
-
-
-
     }
 }

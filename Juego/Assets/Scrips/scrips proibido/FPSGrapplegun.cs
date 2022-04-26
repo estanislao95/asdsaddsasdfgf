@@ -30,7 +30,6 @@ public class FPSGrapplegun : MonoBehaviour
 
     public RawImage CrossHair;
 
-    int range = 0;
 
     public Color rojo;
     public Color negro;
@@ -71,7 +70,6 @@ public class FPSGrapplegun : MonoBehaviour
         {
             if (active == true)
             {
-                range = 0;
                 CrossHair.color = negro;
             }
 

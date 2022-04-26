@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7618414614946009534}
   - component: {fileID: 7618414614946009505}
   - component: {fileID: 7618414614946009504}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: jump power up
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class move : MonoBehaviour
 {
@@ -55,9 +56,15 @@ public class move : MonoBehaviour
 
     public LayerMask Ground;
 
-    //public Rigidbody cam;
+    [HideInInspector]
+    public float WallR;
+
+    public AudioSource walking;
 
 
+
+    bool walk = false;
+    bool wallrs = false;
 
     // public float dash_timer = 0;
     // public int dash_amount = 0;
@@ -67,8 +74,8 @@ public class move : MonoBehaviour
     // public float refilltimer = 0;
     // public float refilltimermax = 0;
 
-
-
+    [HideInInspector]
+    public bool onwallr = false;
 
 
     // Start is called before the first frame update
@@ -88,9 +95,9 @@ public class move : MonoBehaviour
       Rw = Physics.Raycast(transform.position, -orientation.forward, distance, Ground);
 
 
-      Lw = Physics.Raycast(transform.position, orientation.right, distance, Ground);
+      Lw = Physics.Raycast(transform.position, orientation.right, distance + WallR, Ground);
 
-      Riw = Physics.Raycast(transform.position, -orientation.right, distance, Ground);
+      Riw = Physics.Raycast(transform.position, -orientation.right, distance + WallR, Ground);
 
     }
 
@@ -114,12 +121,30 @@ public class move : MonoBehaviour
         lifebar.fillAmount = (currentlife / maxlife);
         armor.fillAmount = (currentarmor / maxarmor);
 
+        if (currentlife <= 0)
+        {
+            SceneManager.LoadScene("muerte");
+        }
+
+
+
+    }
+
+    public void hit(float damage)
+    {
+        if (currentarmor <= 0)
+        {
+            currentlife -= damage;
+        }
+        else
+        {
+            currentarmor -= damage / 2;
+        }
 
 
 
 
     }
-    
 
 
 
@@ -196,7 +221,7 @@ public class move : MonoBehaviour
 
         if (Lw)
         {
-            if (Input.GetAxis("Horizontal") < 0)
+            if (Input.GetAxis("Horizontal") < 0 && onwallr == false)
             {
                 inputVector.x = Input.GetAxis("Horizontal");
             }
@@ -204,10 +229,11 @@ public class move : MonoBehaviour
             {
                 inputVector.x = 0;
             }
+            wallrs = true;
         }
         else if (Riw)
         {
-            if (Input.GetAxis("Horizontal") > 0)
+            if (Input.GetAxis("Horizontal") > 0 && onwallr == false)
             {
                 inputVector.x = Input.GetAxis("Horizontal");
             }
@@ -215,10 +241,12 @@ public class move : MonoBehaviour
             {
                 inputVector.x = 0;
             }
+            wallrs = true;
         }
         else
         {
             inputVector.x = Input.GetAxis("Horizontal");
+            wallrs = false;
         }
 
 
@@ -286,10 +314,28 @@ public class move : MonoBehaviour
            * inputVector.x + transform.forward * inputVector.y)
            * walkpseed * Time.deltaTime);
 
+            if (walk == false && onair == false && wallrs == false)
+            {
+                walking.Play();
+                walk = true;
+            }
+            else if (walk == true && onair == true) 
+            {
+                walking.Stop();
+                walk = false;
+            }
+            else if (walk == true && wallrs == true)
+            {
+                walking.Stop();
+                walk = false;
+            }
 
-            
 
-
+        }
+        else
+        {
+            walk = false;
+            walking.Stop();
         }
 
 
@@ -300,11 +346,7 @@ public class move : MonoBehaviour
 
     void jumplogic()
     {
-
-
-
-
-
+        //Debug.Log(jumpamount);
         if (Input.GetButtonDown("Jump") && isjump == true && jumpamount != 2)
         {
             if (onair == true)
@@ -389,7 +431,25 @@ public class move : MonoBehaviour
 
     }
 
+    private void OncollisionExit(Collision collision)
+    {
 
+        if (collision.gameObject.layer == 6)
+        {
+            isjump = false;
+            walking.Stop();
+            jumpamount = 1;
+            onair = true;
+        }
+        if (collision.gameObject.layer == 9)
+        {
+            isjump = false;
+            walking.Stop();
+            jumpamount = 1;
+            onair = true;
+        }
+
+    }
 
 
 }

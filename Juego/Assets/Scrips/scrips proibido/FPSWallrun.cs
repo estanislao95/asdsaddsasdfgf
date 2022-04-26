@@ -42,9 +42,15 @@ public class FPSWallrun : MonoBehaviour
 
     public LayerMask Walls;
 
+    move move;
+
+    //int freezemove = 0;
+    //int cfreezed = 0;
+    //bool triggered = false;
+
     private void Start()
     {
-
+        move = GetComponent<move>();
         rb = GetComponent<Rigidbody>();
 
     }
@@ -95,6 +101,10 @@ public class FPSWallrun : MonoBehaviour
     void StartWR()
     {
         rb.useGravity = false;
+
+
+
+        
 
         rb.AddForce(Vector3.down * WRGravity, ForceMode.Force);
 

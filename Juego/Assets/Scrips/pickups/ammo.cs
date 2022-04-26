@@ -4,38 +4,17 @@ using UnityEngine;
 
 public class ammo : MonoBehaviour
 {
-
-
-
     public int bullets = 0;
-
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public AudioClip sound;
 
     private void OnTriggerEnter(Collider collision)
     {
         Shooting bulletsy = collision.GetComponent<Shooting>();
-
-
         if (bulletsy != null && bulletsy.pistolammo != bulletsy.pistolammoMax)
         {
-
             bulletsy.pistolammo += bullets;
-
+            AudioSource.PlayClipAtPoint(sound, transform.position);
             Destroy(this.gameObject);
         }
-
-
-
     }
-
 }

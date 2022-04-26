@@ -29,6 +29,14 @@ public class Shooting : MonoBehaviour
     public int mahcinegunRange = 0;
     public int mahcinegunDamage = 0;
 
+    public int Shotgungunammo = 0;
+    public int ShotgungunammoMax = 0;
+    public int ShotgunGunFirerate = 0;
+    public int ShotgungunRange = 0;
+    public int ShotgungunDamage = 0;
+
+
+
     [SerializeField]
     int currentgunfirerrate = 0;
 
@@ -37,6 +45,19 @@ public class Shooting : MonoBehaviour
 
     public Text ammo;
     public Text gunindicator;
+
+
+    public AudioClip PistolSound;
+    public AudioClip ShotgunSound;
+    public AudioClip MachineGunSound;
+
+
+
+    public AudioSource weapon;
+
+    public bool PistolActive = true;
+    public bool MachineGunActive = true;
+    public bool ShotGunActive = true;
 
     void Start()
     {
@@ -49,6 +70,7 @@ public class Shooting : MonoBehaviour
 
         currentgunfirerrate = PistolFirerate;
         currentgundamage = PistolDamage;
+        weapon.clip = PistolSound;
 
     }
 
@@ -57,35 +79,44 @@ public class Shooting : MonoBehaviour
     {
         lastshoot += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && PistolActive == true)
         {
             type = 1;
             ammo.text = ("Pistol");
             gunindicator.text = ("Ammo " + pistolammo);
             currentgunfirerrate = PistolFirerate;
             currentgundamage = PistolDamage;
+            weapon.clip = PistolSound;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && MachineGunActive == true)
         {
             type = 2;
             ammo.text = ("Machine Gun");
             gunindicator.text = ("Ammo " + machinegunammo);
             currentgunfirerrate = machineGunFirerate;
             currentgundamage = machineGunFirerate;
+            weapon.clip = MachineGunSound;
         }
-        // if (Input.GetKeyDown(KeyCode.Alpha3))
-        // {
-        //     type = 3;
-        //
-        // }
+        if (Input.GetKeyDown(KeyCode.Alpha3) && ShotGunActive == true)
+        {
+            type = 3;
+            ammo.text = ("Shotgun Gun");
+            gunindicator.text = ("Ammo " + Shotgungunammo);
+            currentgunfirerrate = ShotgunGunFirerate;
+            currentgundamage = ShotgungunDamage;
+            weapon.clip = ShotgunSound;
+        }
 
 
-        if (Input.GetKey(KeyCode.Mouse0) && pistolammo >= 0 && type == 1)
+        if (Input.GetKey(KeyCode.Mouse0) && pistolammo >= 0 && type == 1 && PistolActive == true)
         {
             Pshot();
         }
-
-        if (Input.GetKey(KeyCode.Mouse0) && machinegunammo >= 0 && type == 2)
+        else if (Input.GetKey(KeyCode.Mouse0) && machinegunammo >= 0 && type == 2 && MachineGunActive == true)
+        {
+            Pshot();
+        }
+        else if (Input.GetKey(KeyCode.Mouse0) && machinegunammo >= 0 && type == 3 && ShotGunActive == true)
         {
             Pshot();
         }
@@ -102,6 +133,7 @@ public class Shooting : MonoBehaviour
     {
         if (canshot()) //aqui se empieza el disparo
         {
+            weapon.Play();
             //aqui esta para añadir nuevos enemigos
             if (Physics.Raycast(shotpivot.position, shotpivot.forward, out RaycastHit hitinfo, PistolRange))
             {
@@ -123,6 +155,13 @@ public class Shooting : MonoBehaviour
                 machinegunammo--;
                 lastshoot = 0;
             }
+            if (type == 3)
+            {
+                gunindicator.text = ("Ammo " + Shotgungunammo);
+                Shotgungunammo--;
+                lastshoot = 0;
+            }
+
 
         }
 
