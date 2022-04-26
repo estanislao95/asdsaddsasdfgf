@@ -14,6 +14,6 @@ public class Rotate : MonoBehaviour
         Debug.DrawRay(transform.position, TargetOr);
 
         Quaternion targetOrientationQuaternion = Quaternion.LookRotation(TargetOr);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetOrientationQuaternion, Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetOrientationQuaternion, 13*Time.deltaTime);
     }
 }

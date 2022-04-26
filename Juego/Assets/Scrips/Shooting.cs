@@ -59,8 +59,13 @@ public class Shooting : MonoBehaviour
     public bool MachineGunActive = true;
     public bool ShotGunActive = true;
 
+
+    public Animator anims;
+
     void Start()
     {
+        anims = GetComponentInChildren<Animator>();
+        anims.SetBool("PistolEquip", true);
 
         machinegunammo = machinegunammoMax;
         pistolammo = pistolammoMax;
@@ -87,6 +92,9 @@ public class Shooting : MonoBehaviour
             currentgunfirerrate = PistolFirerate;
             currentgundamage = PistolDamage;
             weapon.clip = PistolSound;
+            anims.SetBool("PistolEquip", true);
+            anims.SetBool("RifleEquip", false);
+            anims.SetBool("ShotGunEquip", false);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2) && MachineGunActive == true)
         {
@@ -96,6 +104,9 @@ public class Shooting : MonoBehaviour
             currentgunfirerrate = machineGunFirerate;
             currentgundamage = machineGunFirerate;
             weapon.clip = MachineGunSound;
+            anims.SetBool("RifleEquip", true);
+            anims.SetBool("PistolEquip", false);
+            anims.SetBool("ShotGunEquip", false);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3) && ShotGunActive == true)
         {
@@ -105,20 +116,39 @@ public class Shooting : MonoBehaviour
             currentgunfirerrate = ShotgunGunFirerate;
             currentgundamage = ShotgungunDamage;
             weapon.clip = ShotgunSound;
+            anims.SetBool("ShotGunEquip", true);
+            anims.SetBool("RifleEquip", false);
+            anims.SetBool("PistolEquip", false);
+
         }
 
 
         if (Input.GetKey(KeyCode.Mouse0) && pistolammo >= 0 && type == 1 && PistolActive == true)
         {
             Pshot();
+            anims.SetBool("PistolShoot", true);
         }
-        else if (Input.GetKey(KeyCode.Mouse0) && machinegunammo >= 0 && type == 2 && MachineGunActive == true)
+        else
+        {
+            anims.SetBool("PistolShoot", false);
+        }
+        if (Input.GetKey(KeyCode.Mouse0) && machinegunammo >= 0 && type == 2 && MachineGunActive == true)
         {
             Pshot();
+            anims.SetBool("RifleShoot", true);
         }
-        else if (Input.GetKey(KeyCode.Mouse0) && machinegunammo >= 0 && type == 3 && ShotGunActive == true)
+        else
+        {
+            anims.SetBool("RifleShoot", false);
+        }
+        if (Input.GetKey(KeyCode.Mouse0) && machinegunammo >= 0 && type == 3 && ShotGunActive == true)
         {
             Pshot();
+            anims.SetBool("ShotGunShoot", true);
+        }
+        else
+        {
+            anims.SetBool("ShotGunShoot", false);
         }
 
         machinegunammo = machinegunammo > machinegunammoMax ? machinegunammoMax : machinegunammo;
@@ -133,6 +163,7 @@ public class Shooting : MonoBehaviour
     {
         if (canshot()) //aqui se empieza el disparo
         {
+            
             weapon.Play();
             //aqui esta para añadir nuevos enemigos
             if (Physics.Raycast(shotpivot.position, shotpivot.forward, out RaycastHit hitinfo, PistolRange))
